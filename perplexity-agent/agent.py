@@ -60,7 +60,7 @@ def decompose(state: AgentState) -> AgentState:
         model_id, generate_config = get_model_config()
         
         prompt = f"""
-        Break down the following query into 1-3 simple if necessary, high-level subtasks that need to be completed to answer it effectively:
+        Break down the following query into 1-3 simple high-level subtasks, if necessary, that need to be completed to answer it effectively:
         
         Query: {query}
         
