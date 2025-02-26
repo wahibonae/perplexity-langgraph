@@ -6,8 +6,9 @@ from typing import Dict, List, Optional, Any
 from pydantic import BaseModel
 
 # Add parent directory to path to be able to import the agent module
-sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
-from perplexity_agent.agent import PerplexityAgent
+perplexity_agent_path = os.path.join(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))), "perplexity-agent")
+sys.path.append(perplexity_agent_path)
+from agent import PerplexityAgent
 
 # Initialize FastAPI app
 app = FastAPI(title="Perplexity Agent API")
