@@ -1,0 +1,8 @@
+{
+  "short_name": "Perplexity Agent",
+  "name": "Perplexity-like Research Agent",
+  "start_url": ".",
+  "display": "standalone",
+  "theme_color": "#1e3a8a",
+  "background_color": "#ffffff"
+} 
