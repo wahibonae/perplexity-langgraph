@@ -126,4 +126,4 @@ This project was created for the "Build with AI: Building a Perplexity Agent usi
 
 ## Credits
 
-Created by Mohamed Wahib ABKARI & Anass Amazzaar | GDGOnCampus EMSI Casablanca 
+Created by Mohamed Wahib ABKARI & Anass Amazzar | GDGOnCampus EMSI Casablanca 
