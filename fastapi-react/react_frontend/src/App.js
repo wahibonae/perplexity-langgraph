@@ -46,6 +46,17 @@ function App() {
     }
   };
   
+  const handleNewSearch = () => {
+    // Reset all states and allow for a new search
+    setQuery('');
+    setSubtasks([]);
+    setResults([]);
+    setFinalAnswer('');
+    setError('');
+    // Focus on the input field
+    document.querySelector('.query-input').focus();
+  };
+  
   return (
     <div className="App">
       <header className="App-header">
@@ -86,49 +97,56 @@ function App() {
         )}
         
         {finalAnswer && (
-          <div className="content-container">
-            <div className="column research-column">
-              <h2>Research</h2>
-              
-              {subtasks.length > 0 && (
-                <div className="subtasks-container">
-                  <h3>Subtasks</h3>
-                  <ul>
-                    {subtasks.map((task, index) => (
-                      <li key={index}>{task}</li>
+          <>
+            <div className="content-container">
+              <div className="column research-column">
+                <h2>Research Details</h2>
+                
+                {subtasks.length > 0 && (
+                  <div className="subtasks-container">
+                    <h3>Subtasks</h3>
+                    <ul>
+                      {subtasks.map((task, index) => (
+                        <li key={index}><strong>Task {index + 1}:</strong> {task}</li>
+                      ))}
+                    </ul>
+                  </div>
+                )}
+                
+                {results.length > 0 && (
+                  <div className="results-container">
+                    <h3>Task Results</h3>
+                    {results.map((result, index) => (
+                      <details key={index} className="result-expander">
+                        <summary><strong>Task {index + 1}:</strong> {result.task}</summary>
+                        <div className="result-content">
+                          <ReactMarkdown>{result.result}</ReactMarkdown>
+                        </div>
+                      </details>
                     ))}
-                  </ul>
-                </div>
-              )}
+                  </div>
+                )}
+              </div>
               
-              {results.length > 0 && (
-                <div className="results-container">
-                  <h3>Results</h3>
-                  {results.map((result, index) => (
-                    <details key={index} className="result-expander" open>
-                      <summary>{`Task ${index + 1}: ${result.task}`}</summary>
-                      <div className="result-content">
-                        <ReactMarkdown>{result.result}</ReactMarkdown>
-                      </div>
-                    </details>
-                  ))}
+              <div className="column answer-column">
+                <h2>Answer</h2>
+                <div className="answer-container">
+                  <ReactMarkdown>{finalAnswer}</ReactMarkdown>
                 </div>
-              )}
-            </div>
-            
-            <div className="column answer-column">
-              <h2>Answer</h2>
-              <div className="answer-container">
-                <ReactMarkdown>{finalAnswer}</ReactMarkdown>
               </div>
             </div>
-          </div>
+            
+            <div className="new-search-container">
+              <button 
+                onClick={handleNewSearch}
+                className="new-search-button"
+              >
+                New Search
+              </button>
+            </div>
+          </>
         )}
       </main>
-      
-      <footer className="App-footer">
-        <p>Created by GDGOnCampus EMSI Casablanca</p>
-      </footer>
     </div>
   );
 }

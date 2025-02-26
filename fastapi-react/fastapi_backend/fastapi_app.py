@@ -6,8 +6,8 @@ from typing import Dict, List, Optional, Any
 from pydantic import BaseModel
 
 # Add parent directory to path to be able to import the agent module
-sys.path.append(os.path.dirname(os.path.dirname(os.path.abspath(__file__))))
-from agent import PerplexityAgent
+sys.path.append(os.path.dirname(os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+from perplexity_agent.agent import PerplexityAgent
 
 # Initialize FastAPI app
 app = FastAPI(title="Perplexity Agent API")
@@ -84,7 +84,7 @@ async def process_query(request: QueryRequest):
     except Exception as e:
         raise HTTPException(status_code=500, detail=f"An error occurred: {str(e)}")
 
-# Run with: uvicorn fastapi_backend.fastapi_app:app --reload
+# Run with: uvicorn fastapi_app:app --reload
 if __name__ == "__main__":
     import uvicorn
     uvicorn.run("fastapi_app:app", host="0.0.0.0", port=8000, reload=True) 
