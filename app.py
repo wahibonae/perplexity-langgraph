@@ -106,7 +106,7 @@ elif send_button and query and not st.session_state.running:
                 
         # Display the new result in the results container
         with results_container:
-            with st.expander(f"Task {task_index}: {task}", expanded=True):
+            with st.expander(f"✅ Task {task_index}: {task}", expanded=True):
                 st.markdown(result)
     
     def on_synthesize_start():
